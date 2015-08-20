@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'rails_12factor', group: :production
+gem 'shoulda'
 
 group :development, :test do
   gem 'byebug'
