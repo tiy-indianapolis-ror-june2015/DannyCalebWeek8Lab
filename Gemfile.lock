@@ -143,12 +143,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-<<<<<<< HEAD
-=======
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
->>>>>>> 938400a405f6a252fbd2f1582cdb393985ee9f3e
     rails_admin (0.7.0)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
