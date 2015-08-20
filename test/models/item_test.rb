@@ -4,7 +4,7 @@ class ItemTest < ActiveSupport::TestCase
 
   should belong_to :user
 
-  test "item must have name" do
+  test "item must have a name" do
     item = Item.new(price: "200000",
                     description: "Apple laptop",
                     category: "electronics",
@@ -12,7 +12,7 @@ class ItemTest < ActiveSupport::TestCase
     assert_not item.save
   end
 
-  test "item must have price" do
+  test "item must have a price" do
     item = Item.new(name: "MacBook",
                     description: "Apple laptop",
                     category: "electronics",
@@ -20,7 +20,7 @@ class ItemTest < ActiveSupport::TestCase
     assert_not item.save
   end
 
-  test "item must have description" do
+  test "item must have a description" do
     item = Item.new(name: "MacBook",
                     price: "200000",
                     category: "electronics",
@@ -28,7 +28,7 @@ class ItemTest < ActiveSupport::TestCase
     assert_not item.save
   end
 
-  test "item must have category" do
+  test "item must have a category" do
     item = Item.new(name: "MacBook",
                     price: "200000",
                     description: "Apple laptop",
