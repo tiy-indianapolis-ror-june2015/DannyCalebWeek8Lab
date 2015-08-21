@@ -1,15 +1,17 @@
 <div class="row">
-  <div class="col-md-2 col-sm-3 col-xs-6 pic-preview">
-    <a href="#" class="thumbnail">
-      <img src="#" alt="Image not found!">
-    </a>
+<% @items.each_slice(4) do |row| %>
+  <div class="row">
+    <% row.each do |item| %>
+      <div class="col-xs-6 col-sm-3">
+        <%= link_to item_path(:id => item.id) do %>
+          <div class="item-<%=item.id%> item">
+              <img src="#" class="img-responsive" alt="No Image Found!!!"/>
+          </div>
+        <% end %>
+        <h3 class="item-name"><%= item.name %></h3>
+        <h4 class="item-price"><%="$#{item.price/100}"%></h4>
+        <p class="item-description"><%= item.description %></p>
+      </div>
+    <% end %>
   </div>
-  <div class="col-md-9 col-sm-8 col-xs-5">
-      <h3 class="item-name">
-        <%= item.name %>
-      </h3>
-      <p class="item-description">
-        <%= item.description %>
-      </p>
-  </div>
-</div>
+<% end %>
