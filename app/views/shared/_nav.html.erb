@@ -8,18 +8,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h3 class="navbar-brand">Think Gifferently</h3>
+      <%= link_to "Think Gifferently", root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-        <% else %>
+        <% if current_user && current_user.role == "admin" %>
+          <li><%= link_to link_to "Admin Dashboard", "#" %></li>
         <% end %>
 
-        <li></li>
+        <% if current_user %>
+          <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+          <li><%= link_to "View Profile", "#" %></li>
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>
+        
+        <li><%= link_to "View Cart", "#" %></li>
+
+        <!-- Could be redone with Rails form helpers -->
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
