@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'rails_12factor', group: :production
 gem 'shoulda'
+gem 'has_permalink'
 
 group :development, :test do
   gem 'byebug'
