@@ -22,7 +22,7 @@ gem 'shoulda'
 gem 'has_permalink'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="col-xs-3 picture">
+    <img src="#" class="img-responsive" alt="No Image Found!!!"/>
+  </div>
+  <div class="col-xs-9 item-body">
+    <div class="row cart <%=item.id%>-name">
+      <%= item.name %>
+    </div>
+    <div class="row cart <%=item.id%>-quantity">
+      Quantity:
+      <!-- <%# form_tag update_quantity_path(:item => item) %>
+      <%# %> -->
+    </div>
+    <div class="row cart <%=item.id%>-delete">
+      <%= link_to 'Delete', item_path, method: :delete%>
+    </div>
+  </div>
+  <div class="col-xs-3 item-total-price">
+    <%= item.price %>
+  </div>
+</div>
