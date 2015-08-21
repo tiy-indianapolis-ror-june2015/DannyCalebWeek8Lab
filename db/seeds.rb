@@ -1,6 +1,7 @@
 User.create(full_name: "Administrator",
             username: "admin",
             email: "admin@valdivian.com",
+            role: "admin",
             password: "adminpass",
             password_confirmation: "adminpass")
 
