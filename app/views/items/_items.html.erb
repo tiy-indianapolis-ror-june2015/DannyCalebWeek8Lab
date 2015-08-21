@@ -1,3 +1,5 @@
+<%= session[:cart_id] %>
+
 <div class="row">
 <% @items.each_slice(4) do |row| %>
   <div class="row">
@@ -11,7 +13,7 @@
         <h3 class="item-name"><%= item.name %></h3>
         <h4 class="item-price"><%="$#{item.price/100}"%></h4>
         <p class="item-description"><%= item.description %></p>
-        <i class="btn btn-default">Add to cart</i>
+        <i><%= button_to "Add to Cart", add_to_cart_path(item_id: item.id), method: :get, class: "btn btn-default" %></i>
       </div>
     <% end %>
   </div>
