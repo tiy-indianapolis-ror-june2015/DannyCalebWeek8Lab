@@ -1,21 +1,32 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:show]
+  before_action :set_item, only:[:show, :delete]
 
   def index
     @items = Item.all
-    if session[:cart_id].nil?
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-    end
   end
 
   def show
+  end
+
+  #need to add authorization to this
+  def destroy
+    @item.destroy
+    respond_to do |format|
+      format.html { redirect_to cart_path, notice: 'Item was successfully deleted.' }
+    end
   end
 
   def add_to_cart
     item = Item.find(params[:item_id])
     cart = Cart.find(session[:cart_id])
     cart.items << item
+    redirect_to :back
+  end
+
+  def remove_from_cart
+    item = Item.find(params[:item_id])
+    cart = Cart.find(session[:cart_id])
+    cart.items.delete(item)
     redirect_to :back
   end
 
