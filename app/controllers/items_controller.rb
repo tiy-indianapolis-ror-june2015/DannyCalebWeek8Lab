@@ -23,6 +23,13 @@ class ItemsController < ApplicationController
     redirect_to :back
   end
 
+  def remove_from_cart
+    item = Item.find(params[:item_id])
+    cart = Cart.find(session[:cart_id])
+    cart.items.delete(item)
+    redirect_to :back
+  end
+
   private
 
   def set_item
