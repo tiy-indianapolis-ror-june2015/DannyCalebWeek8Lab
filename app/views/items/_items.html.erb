@@ -7,10 +7,11 @@
           <div class="item-<%=item.id%> item">
               <img src="#" class="img-responsive" alt="No Image Found!!!"/>
           </div>
+          <h3 class="item-name"><%= item.name %></h3>
         <% end %>
-        <h3 class="item-name"><%= item.name %></h3>
         <h4 class="item-price"><%="$#{item.price/100}"%></h4>
         <p class="item-description"><%= item.description %></p>
+
         <i class="btn btn-default">Add to cart</i>
       </div>
     <% end %>
