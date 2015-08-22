@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
     item = Item.find(params[:item_id])
     cart = Cart.find(session[:cart_id])
     cart.items << item
+    session["item-#{item.id}-qty"] = 1
     redirect_to :back
   end
 
