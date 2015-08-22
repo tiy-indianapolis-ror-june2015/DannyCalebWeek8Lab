@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <h3>Previous Purchases</h3>
+  </div>
+
+  <% if @receipts.empty? %>
+    <p>No Receipts</p>
+  <% else %>
+    <div class="row">
+      <%= render partial: 'receipt', collection: @receipts %>
+    </div>
+  <% end %>
+
+
+</div>

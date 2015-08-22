@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-3 picture">
+    <img src="#" class="img-responsive" alt="No Image Found!!!"/>
+  </div>
+  <div class="col-xs-9 item-body">
+    <div class="row cart <%=item.id%>-name">
+      <div class="col-xs-9">
+        <%= item.name %>
+      </div>
+    </div>
+    <div class="row cart <%=item.id%>-quantity">
+      <div class="col-xs-9">
+        Quantity:
+        <div class="quantity-<%= item.id%>">
+          <%= session["item-#{item.id}-qty"] %>
+        </div>
+        Unit Price:
+        <div class="price-<%= item.id%>">
+          <%= item.price %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-3 item-total-price">
+    Total Price:
+    <%= item.total_price(session["item-#{item.id}-qty"]) %>
+  </div>
+</div>

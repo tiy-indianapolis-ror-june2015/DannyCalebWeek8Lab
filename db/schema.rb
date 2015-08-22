@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821162909) do
+ActiveRecord::Schema.define(version: 20150822181540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150821162909) do
     t.datetime "updated_at",  null: false
     t.integer  "cart_id"
     t.string   "permalink"
+    t.integer  "receipt_id"
   end
 
   add_index "items", ["permalink"], name: "index_items_on_permalink", using: :btree
@@ -133,6 +134,13 @@ ActiveRecord::Schema.define(version: 20150821162909) do
   end
 
   add_index "payola_subscriptions", ["guid"], name: "index_payola_subscriptions_on_guid", using: :btree
+
+  create_table "receipts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "checkout_total"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
