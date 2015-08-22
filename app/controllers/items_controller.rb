@@ -19,8 +19,12 @@ class ItemsController < ApplicationController
   def add_to_cart
     item = Item.find(params[:item_id])
     cart = Cart.find(session[:cart_id])
-    cart.items << item
-    session["item-#{item.id}-qty"] = 1
+    if cart.items.include?(item)
+      session["item-#{item.id}-qty"] += 1
+    else
+      cart.items << item
+      session["item-#{item.id}-qty"] = 1
+    end
     redirect_to :back
   end
 

@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :create_cart
-  
+  before_action :pass_cart
+
   protected
 
-  def create_cart
+  def pass_cart
     if session[:cart_id].nil?
       @cart = Cart.create
       session[:cart_id] = @cart.id
