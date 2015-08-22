@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150821162909) do
     t.integer  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "permalink"
     t.integer  "cart_id"
+    t.string   "permalink"
   end
 
   add_index "items", ["permalink"], name: "index_items_on_permalink", using: :btree
