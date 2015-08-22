@@ -1,9 +1,10 @@
-<% if @cart.user %>
-<h1><%= @cart.user.username %>'s Cart</h1>
-<% else %>
-<h1>Visitor's Cart</h1>
-<% end %>
-
 <div class="container">
+  <% if @cart.user %>
+  <h1><%= @cart.user.username %>'s Cart</h1>
+  <% else %>
+  <h1>Visitor's Cart</h1>
+  <% end %>
   <%= render :partial => 'items/item', :collection => @items %>
+  <%= @quantity %>
 </div>
+<%= @checkout_total %>
