@@ -4,7 +4,7 @@ class CartsController < ApplicationController
 
   def show
     @items = @cart.items
-    @checkout_total = @items.inject(0) { |sum, item| sum + (item.price * session["item-#{item.id}-qty"])}
+    session[:checkout_total] = @items.inject(0) { |sum, item| sum + (item.price * session["item-#{item.id}-qty"])}
   end
 
   def show_quantity_form
