@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Payola::Engine => '/payola', as: :payola
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -10,9 +9,11 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show]
 
+  resources :charges
+
   root 'items#index'
 
   get '/show_quantity_form/:item_id' => 'carts#show_quantity_form', as: :show_quantity_form
   post '/update_quantity_form/:item_id' => 'carts#update_quantity_form', as: :update_quantity_form
-  
+
 end
