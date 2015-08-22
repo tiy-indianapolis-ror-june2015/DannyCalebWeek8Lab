@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   resources :items
   get '/add_to_cart/:item_id' => 'items#add_to_cart', as: :add_to_cart
   get '/remove_from_cart/:item_id' => 'items#remove_from_cart', as: :remove_from_cart
-  devise_for :users
+  
+  devise_for :users, controllers: {
+    confirmations:  "users/confirmations",
+    # omniauth_callbacks: 'users/omniauth_callbacks'
+    passwords:      "users/passwords",
+    registrations:  "users/registrations",
+    sessions:       "users/sessions",
+    unlocks:        "users/unlocks"
+  }
 
   resources :carts, only: [:show]
 

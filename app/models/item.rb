@@ -8,6 +8,6 @@ class Item < ActiveRecord::Base
     self.price * (quantity)
   end
 
-  
+
 
 end

@@ -17,4 +17,5 @@ class UserTest < ActiveSupport::TestCase
     assert user.password
     assert user.password_confirmation
   end
+  should have_one :cart
 end
