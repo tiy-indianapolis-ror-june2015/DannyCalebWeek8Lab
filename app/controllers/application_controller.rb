@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def pass_cart
-    if session[:cart_id].nil?
+    if !current_user && session[:cart_id].nil?
       @cart = Cart.create
       session[:cart_id] = @cart.id
     end

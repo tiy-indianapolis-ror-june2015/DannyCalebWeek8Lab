@@ -1,10 +1,10 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only:[:show]
+  before_action :set_cart, only:[:show, :show_quantity_form, :update_quantity_form]
   before_action :set_item, only:[:show_quantity_form, :update_quantity_form]
 
   def show
     @items = @cart.items
-    session[:checkout_total] = @items.inject(0) { |sum, item| sum + (item.price * session["item-#{item.id}-qty"])}
+    cookies[:checkout_total] = @items.inject(0) { |sum, item| sum + (item.price * cookies["cart-#{@cart.id}-item-#{item.id}-qty"].to_i)}
   end
 
   def show_quantity_form
@@ -14,7 +14,7 @@ class CartsController < ApplicationController
   end
 
   def update_quantity_form
-    session["item-#{@item.id}-qty"] = params[:quantity].to_i
+    cookies["cart-#{@cart.id}-item-#{@item.id}-qty"] = params[:quantity].to_i
 
     redirect_to cart_path(:id => session[:cart_id])
   end
@@ -22,7 +22,11 @@ class CartsController < ApplicationController
   private
 
   def set_cart
-    @cart = Cart.find(session[:cart_id])
+    if current_user
+      @cart = current_user.cart
+    else
+      @cart = Cart.find(session[:cart_id])
+    end
   end
 
   def set_item

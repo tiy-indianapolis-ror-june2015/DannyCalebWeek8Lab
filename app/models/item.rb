@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   has_permalink(:name, :true)
 
   def total_price(quantity)
-    self.price * (quantity)
+    self.price * (quantity.to_i)
   end
 
 

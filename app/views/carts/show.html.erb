@@ -4,7 +4,7 @@
   <% else %>
   <h1>Visitor's Cart</h1>
   <% end %>
-  <%= render :partial => 'items/item', :collection => @items %>
+  <%= render :partial => 'items/item', :collection => @items, :locals => {:cart => @cart} %>
   <%= @quantity %>
 </div>
 <%= session[:checkout_total] %>
