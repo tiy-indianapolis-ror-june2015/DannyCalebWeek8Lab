@@ -18,7 +18,6 @@
         <% if current_user && current_user.role == "admin" %>
           <li><%= link_to "Admin Dashboard", rails_admin.dashboard_path %></li>
         <% end %>
-        <li><%= link_to "View Cart", cart_path(:id => session[:cart_id]) %></li>
         <% if current_user %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <li><%= link_to "Previous Purchases", user_receipts_path(user_id: current_user.id) %></li>
@@ -32,7 +31,7 @@
         <% else %>
           <li><%= link_to "View Cart", cart_path(:id => session[:cart_id]) %></li>
         <% end %>
-        
+
         <!-- Could be redone with Rails form helpers -->
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
