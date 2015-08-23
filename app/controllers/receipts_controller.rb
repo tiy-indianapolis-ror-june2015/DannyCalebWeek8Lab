@@ -2,7 +2,7 @@ class ReceiptsController < ApplicationController
 
   # Needs changed to just find receipts for the current user
   def index
-    @receipts = Receipt.all.select { |receipt| receipt.user.id = params[:user_id] }
+    @receipts = current_user.receipts
   end
 
   def show

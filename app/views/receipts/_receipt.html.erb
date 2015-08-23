@@ -1,6 +1,6 @@
 <div class="row">
-  <h4><%= receipt.id %></h4>
-  <p>Purchased on: <%= receipt.created_at.strftime("%d %b. %Y") %></p>
+  <h4>Receipt #<%= receipt.id %></h4>
+  <p>Purchased on: <%= receipt.created_at.strftime("%B %d, %Y") %></p>
   <p>Purchase total: <%= receipt.checkout_total %></p>
   <%= link_to "View Receipt", show_receipt_path(receipt_id: receipt.id) %>
 </div>
