@@ -1,11 +1,10 @@
 class ChargesController < ApplicationController
-  after_filter :create_receipt, only: :create
 
   def new
   end
 
   def create
-    @amount = session[:checkout_total]
+    @amount = cookies[:checkout_total]
 
     customer = Stripe::Customer.create(
       :email => params[:email],
@@ -18,6 +17,8 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
+
+    create_receipt
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -35,7 +36,7 @@ class ChargesController < ApplicationController
     if current_user
       receipt = Receipt.create(user_id: current_user.id)
       receipt.items = cart.items
-      receipt.checkout_total = cart.checkout_total
+      receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
       receipt.items = cart.items
@@ -50,6 +51,7 @@ class ChargesController < ApplicationController
       cart.items.clear
     else
       cart.delete
+      session[:cart_id] = nil
     end
   end
 
