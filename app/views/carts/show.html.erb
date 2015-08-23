@@ -6,11 +6,12 @@
   <% end %>
   <%= render :partial => 'items/item', :collection => @items, :locals => {:cart => @cart} %>
   <%= @quantity %>
-</div>
-<%= session[:checkout_total] %>
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  <%= session[:checkout_total] %>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
         data-description="A month's subscription"
         data-amount="<%= session[:checkout_total] %>"
         data-locale="auto"></script>
+</div>
