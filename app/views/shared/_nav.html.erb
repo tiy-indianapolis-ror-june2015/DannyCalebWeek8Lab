@@ -27,8 +27,11 @@
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <% end %>
 
-        <li><%= link_to "View Cart", cart_path(:id => session[:cart_id]) %></li>
-
+        <% if current_user %>
+          <li><%= link_to "View Cart", cart_path(:id => current_user.cart.id) %></li>
+        <% else %>
+          <li><%= link_to "View Cart", cart_path(:id => session[:cart_id]) %></li>
+        <% end %>
         <!-- Could be redone with Rails form helpers -->
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
