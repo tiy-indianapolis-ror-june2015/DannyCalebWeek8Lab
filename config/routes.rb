@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'user/:user_id' => 'receipts#index', as: :user_receipts
+  get 'receipt/:receipt_id' => 'receipts#show', as: :show_receipt
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :items
