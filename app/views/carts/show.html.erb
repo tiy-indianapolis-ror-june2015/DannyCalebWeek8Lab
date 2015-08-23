@@ -9,8 +9,10 @@
 </div>
 <%= session[:checkout_total] %>
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-description="A month's subscription"
-        data-amount="<%= session[:checkout_total] %>"
-        data-locale="auto"></script>
+<%= form_tag charges_path do %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Purchase cart"
+          data-amount="<%= @amount %>"
+          data-locale="auto"></script>
+<% end %>
