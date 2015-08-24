@@ -18,11 +18,11 @@
     </div>
 
     <div class="row">
-      Unit Price: $<span class="price-<%= item.id%>"><%= item.price %></span>
+      Unit Price: $<span class="price-<%= item.id%>"><%= item.price/100.to_f %></span>
     </div>
 
     <div class="row">
-      Total Price: $<%= item.total_price(cookies["cart-#{cart.id}-item-#{item.id}-qty"]) %>
+      Total Price: $<%= item.total_price(cookies["cart-#{cart.id}-item-#{item.id}-qty"])/100.to_f %>
     </div>
 
     <div class="row">

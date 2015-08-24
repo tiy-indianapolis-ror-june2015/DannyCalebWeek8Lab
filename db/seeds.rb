@@ -259,7 +259,7 @@ Item.create(name: "Burrito",
             user_id: 1)
 
 Item.create(name: "Cheetos",
-            price: 099,
+            price: 99,
             description: "Orange poops",
             category: "Food",
             user_id: 1)
