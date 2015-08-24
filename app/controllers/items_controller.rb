@@ -20,10 +20,13 @@ class ItemsController < ApplicationController
   def add_to_cart
     item = Item.find(params[:item_id])
     if @cart.items.include?(item)
-      cookies["cart-#{@cart.id}item-#{item.id}-qty"] += 1
+      key = "item-#{item.id}-qty"
+      old_value = cookies[key]
+      new_value = old_value.to_i + 1
+      cookies[key] = new_value
     else
       @cart.items << item
-      cookies["cart-#{@cart.id}-item-#{item.id}-qty"] = 1
+      cookies["item-#{item.id}-qty"] = 1
     end
     redirect_to :back
   end

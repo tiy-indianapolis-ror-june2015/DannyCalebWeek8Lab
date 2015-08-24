@@ -12,7 +12,7 @@
     <div class="row">
         Quantity:
         <span class="quantity-<%= item.id%>">
-          <%= cookies["cart-#{cart.id}-item-#{item.id}-qty"] %>
+          <%= cookies["item-#{item.id}-qty"] %>
           <%= link_to 'Change', show_quantity_form_path(:item_id => item.id), :remote => true  %>
         </span>
     </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="row">
-      Total Price: $<%= item.total_price(cookies["cart-#{cart.id}-item-#{item.id}-qty"]) %>
+      Total Price: $<%= item.total_price(cookies["item-#{item.id}-qty"]) %>
     </div>
 
     <div class="row">

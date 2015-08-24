@@ -35,11 +35,11 @@ class ChargesController < ApplicationController
     cart = Cart.find(session[:cart_id])
     if current_user
       receipt = Receipt.create(user_id: current_user.id)
-      receipt.items = receipt.items + current_user.cart.items
+      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(current_user.cart.items)
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
-      receipt.items = receipt.items + current_user.cart.items
+      receipt.items = receipt.items + prepare_receipt_items(current_user.cart.items)
     end
     clear_cart(cart)
     redirect_to show_receipt_path(receipt_id: receipt.id)
@@ -52,6 +52,20 @@ class ChargesController < ApplicationController
     else
       cart.delete
       session[:cart_id] = nil
+    end
+  end
+
+  # Create purchased items which can be stored in the db for receipts
+  def prepare_receipt_items(items)
+    items.collect do |item|
+      PurchasedItem.create(
+      :quantity => cookies["item-#{item.id}-qty"].to_i,
+      :category => item.category,
+      :description => item.description ,
+      :name => item.name,
+      :user_id => current_user.id,
+      :price => item.price
+      )
     end
   end
 
