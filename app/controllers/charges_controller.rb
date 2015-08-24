@@ -39,7 +39,7 @@ class ChargesController < ApplicationController
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
-      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(current_user.cart.items)
+      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(Cart.find(session[:cart_id]).items)
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     end
     clear_cart(cart)
@@ -64,7 +64,7 @@ class ChargesController < ApplicationController
       :category => item.category,
       :description => item.description ,
       :name => item.name,
-      :user_id => current_user.id,
+      :user_id => current_user ? current_user.id : nil,
       :price => item.price
       )
     end
