@@ -35,11 +35,11 @@ class ChargesController < ApplicationController
     cart = Cart.find(session[:cart_id])
     if current_user
       receipt = Receipt.create(user_id: current_user.id)
-      receipt.items = cart.items
+      receipt.items = receipt.items + current_user.cart.items
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
-      receipt.items = cart.items
+      receipt.items = receipt.items + current_user.cart.items
     end
     clear_cart(cart)
     redirect_to show_receipt_path(receipt_id: receipt.id)
@@ -48,7 +48,7 @@ class ChargesController < ApplicationController
   # Clear cart for customers and delete cart for visitors
   def clear_cart(cart)
     if current_user
-      cart.items.clear
+      current_user.cart.items.clear
     else
       cart.delete
       session[:cart_id] = nil
