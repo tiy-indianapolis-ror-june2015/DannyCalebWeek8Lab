@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150824002047) do
     t.integer  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "permalink"
     t.integer  "cart_id"
+    t.string   "permalink"
     t.integer  "receipt_id"
   end
 
