@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
   belongs_to :user
-  belongs_to :cart
-  belongs_to :receipt
+  has_many :line_items
+  has_many :carts, through: :line_items
+  has_many :receipts, through: :line_items
   validates_presence_of :name, :price, :category, :description, :user_id
   has_permalink(:name, :true)
 

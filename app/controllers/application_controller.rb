@@ -3,14 +3,22 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :pass_cart
+  before_action :set_cart
 
   protected
 
-  def pass_cart
-    if !current_user && session[:cart_id].nil?
+  def set_cart
+    if current_user
+      puts "Hi current_user."
+      @cart = current_user.cart
+    elsif session[:cart_id]
+      puts "Hi session."
+      @cart = Cart.find(session[:cart_id])
+    else
+      puts "Hi else."
       @cart = Cart.create
       session[:cart_id] = @cart.id
+      @cart.save!
     end
   end
 
