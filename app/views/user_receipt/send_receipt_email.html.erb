@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for shopping with us today, <%= @user.username %>!</h1>
+    <p>Next time buy a million iPhones.</p>
+    <h2>Thank you for your purchase! This is your receipt.</h2>
+
+    <h4>Receipt #<%= @receipt.id %></h4>
+    <p>Purchased on: <%= @receipt.created_at.strftime("%B %d, %Y") %></p>
+    <p>Purchase total: $<%= @receipt.checkout_total %></p>
+
+    <%= render :partial => 'receipts/purchased_item', :collection => @receipt.purchased_items %>
+
+  </body>
+</html>

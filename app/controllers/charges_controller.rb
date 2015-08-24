@@ -37,6 +37,7 @@ class ChargesController < ApplicationController
       receipt = Receipt.create(user_id: current_user.id)
       receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(current_user.cart.items)
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
+      UserReceipt.send_receipt_email(current_user, receipt).deliver
     else
       receipt = Receipt.create
       receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(Cart.find(session[:cart_id]).items)
