@@ -5,7 +5,7 @@
   <p>Purchased on: <%= @receipt.created_at.strftime("%B %d, %Y") %></p>
   <p>Purchase total: $<%= @receipt.checkout_total %></p>
 
-  <%= render :partial => 'purchased_item', :collection => @receipt.purchased_items %>
+  <%= render :partial => 'line_item', :collection => @receipt.line_items %>
 
   <% if current_user %>
     <%= link_to "View all receipts", user_receipts_path(user_id: current_user.id) %>

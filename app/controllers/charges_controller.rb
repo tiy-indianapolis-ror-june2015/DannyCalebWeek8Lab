@@ -31,25 +31,25 @@ class ChargesController < ApplicationController
   # Create a receipt for the user
   # Clear the cart
   # Show the receipt
+  # @cart is using the cart set in ApplicationController
   def create_receipt
-    cart = Cart.find(session[:cart_id])
     if current_user
       receipt = Receipt.create(user_id: current_user.id)
-      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(current_user.cart.items)
+      receipt.line_items = receipt.line_items + @cart.line_items
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
-      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(Cart.find(session[:cart_id]).items)
+      receipt.line_items = receipt.line_items + @cart.line_items
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     end
-    clear_cart(cart)
+    clear_cart(@cart)
     redirect_to show_receipt_path(receipt_id: receipt.id)
   end
 
   # Clear cart for customers and delete cart for visitors
   def clear_cart(cart)
     if current_user
-      current_user.cart.items.clear
+      current_user.cart.line_items.clear
     else
       cart.delete
       session[:cart_id] = nil
