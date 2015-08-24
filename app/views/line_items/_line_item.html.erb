@@ -1,0 +1,33 @@
+<div class="row">
+
+  <div class="col-md-2">
+    <img src="#" class="img-responsive" alt="No Image Found!!!"/>
+  </div>
+
+  <div class="col-md-10">
+    <div class="row">
+      <h4><%= line_item.item.name %></h4>
+    </div>
+
+    <div class="row">
+        Quantity:
+        <span class="quantity-<%= line_item.id%>">
+          <%= line_item.quantity %>
+          <%= link_to 'Change', show_quantity_form_path(:line_item_id => line_item.id), :remote => true  %>
+        </span>
+    </div>
+
+    <div class="row">
+      Unit Price: $<span class="price-<%= line_item.id%>"><%= line_item.item.price/100.to_f %></span>
+    </div>
+
+    <div class="row">
+      Total Price: $<%= line_item.item.total_price(line_item.quantity)/100.to_f %>
+    </div>
+
+    <div class="row">
+      <%= link_to 'Delete', remove_from_cart_path(:line_item_id => line_item.id) %>
+    </div>
+
+  </div>
+</div>

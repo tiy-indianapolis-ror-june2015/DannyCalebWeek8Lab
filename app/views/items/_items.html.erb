@@ -11,7 +11,7 @@
         <% end %>
         <h4 class="item-price"><%="$#{item.price/100.to_f}"%></h4>
         <p class="item-description"><%= item.description %></p>
-        <i><%= button_to "Add to Cart", add_to_cart_path(item_id: item.id), method: :get, class: "btn btn-default" %></i>
+        <i><%= button_to "Add to Cart", line_items_path(item_id: item.id), method: :post, class: "btn btn-default" %></i>
       </div>
     <% end %>
   </div>

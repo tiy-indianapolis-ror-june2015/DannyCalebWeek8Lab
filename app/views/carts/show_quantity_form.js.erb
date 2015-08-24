@@ -1,1 +1,1 @@
-$(".quantity-<%=@item.id %>").html("<%=j render partial: 'carts/quantity_form', :locals => {:item => @item, :cart => @cart} %>")
+$(".quantity-<%=@line_item.id %>").html("<%=j render partial: 'carts/quantity_form', :locals => {:line_item => @line_item, :cart => @cart} %>")
