@@ -82,7 +82,7 @@ Item.create(name: "Baseball Bat",
             user_id: 1)
 
 Item.create(name: "Roller Skates",
-            price: 44.99,
+            price: 4499,
             description: "2.5in wheels",
             category: "Outdoor Equipment",
             user_id: 1)
@@ -112,19 +112,19 @@ Item.create(name: "Volleyball Net",
             user_id: 1)
 
 Item.create(name: "Frisbee",
-            price: 12.99,
+            price: 1299,
             description: "Caleb is awesome at ultimate frisbee",
             category: "Outdoor Equipment",
             user_id: 1)
 
 Item.create(name: "Tiki Torch",
-            price: 22.99,
+            price: 2299,
             description: "Accidentally get caught on fire",
             category: "Outdoor Equipment",
             user_id: 1)
 
 Item.create(name: "Bocce Ball",
-            price: 84.99,
+            price: 8499,
             description: "Professional Bocce ball set",
             category: "Outdoor Equipment",
             user_id: 1)
@@ -143,13 +143,13 @@ Item.create(name: "Slacks",
             user_id: 1)
 
 Item.create(name: "Neck Tie",
-            price: 44.99,
+            price: 4499,
             description: "Slim plaid tie",
             category: "Clothing and Accessories",
             user_id: 1)
 
 Item.create(name: "Sweater",
-            price: 24.99,
+            price: 2499,
             description: "Destroy your friends in an ugly sweater contest",
             category: "Clothing and Accessories",
             user_id: 1)
@@ -161,7 +161,7 @@ Item.create(name: "Jeans",
             user_id: 1)
 
 Item.create(name: "Converse",
-            price: 44.99,
+            price: 4499,
             description: "Caleb's feet",
             category: "Clothing and Accessories",
             user_id: 1)
@@ -185,7 +185,7 @@ Item.create(name: "Scarf",
             user_id: 1)
 
 Item.create(name: "Beanie",
-            price: 7.99,
+            price: 799,
             description: "All year long",
             category: "Clothing and Accessories",
             user_id: 1)
@@ -204,7 +204,7 @@ Item.create(name: "Drums",
             user_id: 1)
 
 Item.create(name: "Ukulele",
-            price: 84.99,
+            price: 8499,
             description: "Secrely awesome",
             category: "Music Equipment",
             user_id: 1)
@@ -246,44 +246,44 @@ Item.create(name: "Guitar Cable",
             user_id: 1)
 
 Item.create(name: "Tuner",
-            price: 14.99,
+            price: 1499,
             description: "Good",
             category: "Music Equipement",
             user_id: 1)
 
 # Food
 Item.create(name: "Burrito",
-            price: 7.99,
+            price: 799,
             description: "Gives you the poops",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "Cheetos",
-            price: 0.99,
+            price: 099,
             description: "Orange poops",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "Tofu",
-            price: 4.99,
+            price: 499,
             description: "For Danny :)",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "Pizza",
-            price: 14.99,
+            price: 1499,
             description: "Caleb's life for the last 7 years",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "Ramen",
-            price: 1.99,
+            price: 199,
             description: "College food",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "Spaghetti",
-            price: 3.99,
+            price: 399,
             description: "Make a mess on your clothes",
             category: "Food",
             user_id: 1)
@@ -295,19 +295,19 @@ Item.create(name: "Water",
             user_id: 1)
 
 Item.create(name: "Hamburger",
-            price: 8.99,
+            price: 899,
             description: "3 patties, minimum",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "French Fries",
-            price: 1.99,
+            price: 199,
             description: "'belongs_to :hamburger'",
             category: "Food",
             user_id: 1)
 
 Item.create(name: "Soda",
-            price: 1.99,
+            price: 199,
             description: "Slowly killing you",
             category: "Food",
             user_id: 1)
@@ -326,7 +326,7 @@ Item.create(name: "Bed",
             user_id: 1)
 
 Item.create(name: "Curtains",
-            price: 24.99,
+            price: 2499,
             description: "Sleep in longer",
             category: "Home Decor",
             user_id: 1)
@@ -368,7 +368,7 @@ Item.create(name: "Salt Lamp",
             user_id: 1)
 
 Item.create(name: "Chandelier",
-            price: 1.99,
+            price: 199,
             description: "I'm gonna swing from the..",
             category: "Home Decor",
             user_id: 1)
