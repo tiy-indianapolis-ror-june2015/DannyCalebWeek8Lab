@@ -58,29 +58,16 @@ class ChargesController < ApplicationController
 
   # Create purchased items which can be stored in the db for receipts
   def prepare_receipt_items(items)
-    if current_user
-      items.collect do |item|
-        PurchasedItem.create(
-        :quantity => cookies["item-#{item.id}-qty"].to_i,
-        :category => item.category,
-        :description => item.description ,
-        :name => item.name,
-        :user_id => current_user.id,
-        :price => item.price
-        )
-      end
-    else
-      items.collect do |item|
-        PurchasedItem.create(
-        :quantity => cookies["item-#{item.id}-qty"].to_i,
-        :category => item.category,
-        :description => item.description ,
-        :name => item.name,
-        :price => item.price
-        )
-      end
+    items.collect do |item|
+      PurchasedItem.create(
+      :quantity => cookies["item-#{item.id}-qty"].to_i,
+      :category => item.category,
+      :description => item.description ,
+      :name => item.name,
+      :user_id => current_user ? current_user.id : nil,
+      :price => item.price
+      )
     end
-
   end
 
 
