@@ -39,7 +39,8 @@ class ChargesController < ApplicationController
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
-      receipt.items = receipt.items + prepare_receipt_items(current_user.cart.items)
+      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(current_user.cart.items)
+      receipt.update_attributes(checkout_total: cookies[:checkout_total])
     end
     clear_cart(cart)
     redirect_to show_receipt_path(receipt_id: receipt.id)

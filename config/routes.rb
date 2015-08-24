@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'search' => 'search#index', as: :search
+
   get 'user/:user_id' => 'receipts#index', as: :user_receipts
   get 'receipt/:receipt_id' => 'receipts#show', as: :show_receipt
 
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   resources :items
   get '/add_to_cart/:item_id' => 'items#add_to_cart', as: :add_to_cart
   get '/remove_from_cart/:item_id' => 'items#remove_from_cart', as: :remove_from_cart
-  
+
   devise_for :users, controllers: {
     confirmations:  "users/confirmations",
     # omniauth_callbacks: 'users/omniauth_callbacks'
