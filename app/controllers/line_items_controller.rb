@@ -1,10 +1,11 @@
 class LineItemsController < ApplicationController
 
   def create
-    item = Item.find(params[:item_id])
-    if @cart.items.include?(item)
-      line_item = Cart.find_by_item_id(params[:item_id])
+    @item = Item.find(params[:item_id])
+    if @cart.items.include?(@item)
+      line_item = @cart.line_items.find_by_item_id(@item.id)
       line_item.quantity += 1
+      line_item.save!
     else
       @line_item = LineItem.create(:item_id => item.id, :cart_id => @cart.id)
     end
