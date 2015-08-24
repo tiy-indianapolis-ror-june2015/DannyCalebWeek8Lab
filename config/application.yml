@@ -1,7 +1,0 @@
-# Stripe keys
-SECRET_KEY: "sk_test_NNPFfKUjqE1cJTMZZPJmfF2X"
-PUBLISHABLE_KEY: "pk_test_Hf5CY7jYLGXEStMB0JcmVSTS"
-
-# Amazon S3 keys
-# aws_key:
-# aws_secret:
