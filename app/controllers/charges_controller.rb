@@ -39,7 +39,7 @@ class ChargesController < ApplicationController
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     else
       receipt = Receipt.create
-      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(current_user.cart.items)
+      receipt.purchased_items = receipt.purchased_items + prepare_receipt_items(Cart.find(session[:cart_id]).items)
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
     end
     clear_cart(cart)
@@ -58,16 +58,29 @@ class ChargesController < ApplicationController
 
   # Create purchased items which can be stored in the db for receipts
   def prepare_receipt_items(items)
-    items.collect do |item|
-      PurchasedItem.create(
-      :quantity => cookies["item-#{item.id}-qty"].to_i,
-      :category => item.category,
-      :description => item.description ,
-      :name => item.name,
-      :user_id => current_user.id,
-      :price => item.price
-      )
+    if current_user
+      items.collect do |item|
+        PurchasedItem.create(
+        :quantity => cookies["item-#{item.id}-qty"].to_i,
+        :category => item.category,
+        :description => item.description ,
+        :name => item.name,
+        :user_id => current_user.id,
+        :price => item.price
+        )
+      end
+    else
+      items.collect do |item|
+        PurchasedItem.create(
+        :quantity => cookies["item-#{item.id}-qty"].to_i,
+        :category => item.category,
+        :description => item.description ,
+        :name => item.name,
+        :price => item.price
+        )
+      end
     end
+
   end
 
 
