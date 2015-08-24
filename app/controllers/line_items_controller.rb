@@ -7,7 +7,7 @@ class LineItemsController < ApplicationController
       line_item.quantity += 1
       line_item.save!
     else
-      @line_item = LineItem.create(:item_id => item.id, :cart_id => @cart.id)
+      @line_item = LineItem.create(:item_id => @item.id, :cart_id => @cart.id)
     end
     redirect_to :back
   end
