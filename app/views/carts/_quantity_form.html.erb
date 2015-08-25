@@ -1,4 +1,4 @@
-<%= form_tag update_quantity_form_path(:item_id => item.id) do %>
-  <%=text_field_tag :quantity, cookies["item-#{item.id}-qty"].to_i %>
+<%= form_tag update_quantity_form_path(:line_item_id => line_item.id) do %>
+  <%=text_field_tag :quantity, line_item.quantity %>
   <%= submit_tag "Update" %>
 <% end %>

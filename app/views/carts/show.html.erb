@@ -6,7 +6,7 @@
       <h1>Visitor's Cart</h1>
     <% end %>
     <div class="col-xs-9">
-      <%= render :partial => 'items/item', :collection => @items, :locals => {:cart => @cart} %>
+      <%= render :partial => 'line_items/line_item', :collection => @line_items, :locals => {:cart => @cart} %>
     </div>
     <div class="col-xs-3 text-center">
       <h4>Total(<%= pluralize(@cart.number_of_items, "item") %>): $<%= cookies[:checkout_total]/100.to_f %></h4>
