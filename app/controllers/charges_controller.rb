@@ -7,7 +7,7 @@ class ChargesController < ApplicationController
     @amount = cookies[:checkout_total]
 
     customer = Stripe::Customer.create(
-      :email => params[:email],
+      :email => params[:stripeEmail],
       :card  => params[:stripeToken]
     )
 
@@ -18,29 +18,30 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    create_receipt
+    create_receipt(customer)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charges_path
-
   end
-
 
   private
   # Create a receipt for the user
+  # Email the receipt
   # Clear the cart
   # Show the receipt
-  # @cart is using the cart set in ApplicationController
-  def create_receipt
+  def create_receipt(customer)
+    cart = Cart.find(session[:cart_id])
     if current_user
       receipt = Receipt.create(user_id: current_user.id)
       receipt.line_items = receipt.line_items + @cart.line_items
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
+      UserReceipt.send_receipt_email(customer, receipt).deliver_now
     else
       receipt = Receipt.create
       receipt.line_items = receipt.line_items + @cart.line_items
       receipt.update_attributes(checkout_total: cookies[:checkout_total])
+      UserReceipt.send_receipt_email(customer, receipt).deliver_now
     end
     clear_cart(@cart)
     redirect_to show_receipt_path(receipt_id: receipt.id)
