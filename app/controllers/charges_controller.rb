@@ -7,7 +7,7 @@ class ChargesController < ApplicationController
     @amount = cookies[:checkout_total]
 
     customer = Stripe::Customer.create(
-      :email => params[:email],
+      :email => params[:stripeEmail],
       :card  => params[:stripeToken]
     )
 
