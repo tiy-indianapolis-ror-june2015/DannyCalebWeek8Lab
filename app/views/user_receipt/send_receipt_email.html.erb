@@ -12,7 +12,7 @@
     <p>Purchased on: <%= @receipt.created_at.strftime("%B %d, %Y") %></p>
     <p>Purchase total: $<%= @receipt.checkout_total %></p>
 
-    <%= render :partial => 'receipts/purchased_item', :collection => @receipt.purchased_items %>
+    <%= render :partial => 'line_items/line_item', :collection => @receipt.line_items %>
 
   </body>
 </html>
